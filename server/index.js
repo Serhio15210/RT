@@ -13,7 +13,7 @@ app.use(cors())
 
 const start = async () => {
   try {
-      await mongoose.connect('mongodb+srv://db:qwerty123456@cluster0.2qtpx.mongodb.net/auth_roles?retryWrites=true&w=majority')
+      await mongoose.connect(process.env.mongo)
       app.listen(PORT, () => console.log('server started on 5000 port'))
   } catch (e) {
       console.log(e)
