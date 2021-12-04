@@ -1,0 +1,37 @@
+.myBtn{
+    padding: 5px 15px;
+    color: deepskyblue;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid deepskyblue;
+    cursor: pointer;
+    position: relative;
+    left: 40%;
+
+}
+#profileId{
+    font-size: 30px;
+    color: white;
+}
+.default{
+    display: flex;
+    justify-content: center;
+
+}
+.profile{
+    font-palette: dark;
+
+}
+.out{
+    top: 10px;
+    width: 70px;
+}
+.barLink{
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+.barLink:hover{
+
+    color: deepskyblue;
+}

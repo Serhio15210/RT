@@ -1,0 +1,107 @@
+.banner1, .banner2 {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    background: #11a3fc;
+
+}
+
+.img {
+   position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: zoomOut 3s linear infinite;
+}
+
+@keyframes zoomOut {
+    100% {
+        width: 110%;
+    }
+}
+
+.text-box  {
+    width: 600px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    color: white;
+    animation: textup 12s linear infinite;
+    transform: translateY(100px);
+}
+
+@keyframes textup  {
+    10%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+.text-box h1 {
+    margin-bottom: 40px;
+}
+
+.text-box p {
+    font-size: 18px;
+    line-height: 18px;
+    margin-top: 80px;
+}
+
+.text-box span {
+    background: white;
+    height: 1px;
+    width: 300px;
+    position: absolute;
+    left: 0;
+}
+
+.banner1 {
+    animation: slide1 12s linear infinite;
+
+}
+
+.banner2 {
+    animation: slide2 12s linear infinite;
+}
+
+@keyframes slide1 {
+    0% {
+        visibility: visible;
+    }
+    25% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    75% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+@keyframes slide2 {
+    0% {
+        visibility: hidden;
+    }
+    25% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: visible;
+    }
+    75% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: hidden;
+    }
+}
+

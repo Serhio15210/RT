@@ -1,0 +1,310 @@
+/*.search{*/
+/*width: auto;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    top: 20px;*/
+/*}*/
+/*.row-flex{*/
+/*    position: static;*/
+
+/*}*/
+/*.row-flex1{*/
+/*    position: relative;*/
+/*    top: 70px;*/
+/*}*/
+/*html {*/
+/*    overflow-y: scroll;*/
+/*}*/
+/*.card{*/
+/*    position: relative;*/
+/*    top: 30px;*/
+/*}*/
+/*.home{*/
+/*    background: url("Twitter-Increase-Impressions-01.png") fixed;*/
+
+/*    position: absolute;*/
+/*    margin-top: -45px;*/
+/*    top:0;*/
+/*    left:0;*/
+
+/*    min-width:100%;*/
+/*    min-height:100%;*/
+
+/*}*/
+.categoryPointer {
+    cursor: pointer;
+
+}
+
+.home {
+    position: absolute;
+
+    left: 0px;
+    width: 100%;
+    height: 1500px;
+
+}
+
+/*.choose:hover{*/
+/*    background: linear-gradient(purple, pink);*/
+
+/*    transition-duration: 1s;*/
+/*}*/
+.news {
+    position: absolute;
+
+    top: 230px;
+
+}
+
+.search {
+    position: center;
+    top: 30px;
+    left: 0;
+    border-radius: 2px;
+
+}
+
+.filter {
+    position: fixed;
+}
+
+.categories {
+    /*position: relative;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    /*height: 250px;*/
+    /* margin-top: 30px;*/
+    /*margin-bottom: 30px;*/
+    position: absolute;
+    width: 300px;
+    left: 0px;
+    top: 150px;
+    border-top: 1px solid white;
+    box-sizing: border-box;
+
+
+
+}
+
+.newsHeader h1 {
+    position: absolute;
+    width: 340px;
+    height: 107px;
+    left: 0px;
+    top: 0px;
+
+    font-family: Rasa, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 100px;
+    line-height: 122px;
+
+    color: #000000;
+}
+
+.navButtons {
+    position: relative;
+    width: 120px;
+    left: 750px;
+}
+
+.choose {
+    padding: 18px;
+    font-size: large;
+    font-weight: bolder;
+    position: relative;
+    background: linear-gradient(145deg, blue,   deepskyblue, deepskyblue, blue) no-repeat center center fixed;
+
+    color: white;
+    cursor: pointer;
+    line-height: 1; /*задаём высоту строки*/
+    text-decoration: none; /*убираем подчёркивание*/
+}
+.chooseChek {
+    padding: 18px;
+    font-size: large;
+    font-weight: bolder;
+    position: relative;
+    background: linear-gradient(145deg, blue,   deepskyblue, deepskyblue, blue) no-repeat center center fixed;
+
+    color: white;
+    cursor: pointer;
+    line-height: 1; /*задаём высоту строки*/
+    text-decoration: none; /*убираем подчёркивание*/
+}
+.chooseChek:after{
+    display: block;
+    position: absolute;
+    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0; /*задаём длинну линии до наведения курсора*/
+    height: 2px; /*задаём ширину линии*/
+    background-color: mediumvioletred; /*задаём цвет линии*/
+    content: "";
+    transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+
+.choose:after {
+    display: block;
+    position: absolute;
+    left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+    width: 0; /*задаём длинну линии до наведения курсора*/
+    height: 2px; /*задаём ширину линии*/
+    background-color: white;; /*задаём цвет линии*/
+    content: "";
+    transition: width 0.3s ease-out; /*задаём время анимации*/
+
+}
+.chooseChek:focus:after,
+.chooseChek:hover:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+
+}
+.choose:focus:after,
+.choose:hover:after {
+    width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+
+}
+
+.choose:hover {
+    color: white;
+}
+
+.News {
+    position: absolute;
+    width: 1000px;
+    height: max-content;
+    left: 380px;
+    top: 30px;
+
+}
+
+.newsHeader {
+    position: absolute;
+    width: 1000px;
+    height: 200px;
+    top: 25px;
+    border-bottom: 1px solid white;
+
+
+}
+
+.pagination {
+    position: absolute;
+    left: 480px;
+    top: 160px;
+}
+
+.scrollup{
+    width:40px;
+    height:40px;
+    opacity:0.5;
+    position:fixed;
+    bottom:50px;
+    right:50px;
+
+
+
+}
+.TopNews{
+     position: relative;
+    margin: auto;
+    width: 1000px;
+    height: max-content;
+    top: 30px;
+
+}
+.newsHeader h1{
+    width: 800px;
+    position: relative;
+    margin: auto;
+
+}
+.topNews{
+    position: relative;
+    margin: auto;
+    top: 280px;
+    width: 70%;
+}
+.searchTop{
+    width: 350px;
+    height: 42px;
+    padding-left: 10px;
+    border: 2px solid black;
+    border-right: none;
+    border-radius: 3px;
+
+    outline: none;
+
+    color: black;
+}
+.searchTopButton{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    border: 2px solid black;
+    border-left: none;
+    background: deepskyblue;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+.searchTop button:before {
+    content: "\f002";
+    font-family: FontAwesome, serif;
+    font-size: 16px;
+    color: black;
+}
+
+.searchTop::-webkit-input-placeholder {
+    color: deepskyblue;
+    font-style: italic;
+    background: white;
+}
+.searchTop:-moz-placeholder {
+    color: black;
+    font-style: italic;
+    background: black;
+}
+.searchTop:-ms-input-placeholder {
+    color: black;
+    font-style: italic;
+    background: black;
+}
+.search form {
+
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+
+}
+.searchTop#searchTop1{
+    width: 250px;
+    height: 42px;
+    padding-left: 10px;
+    border: 2px solid black;
+    border-right: none;
+    border-radius: 3px;
+
+    outline: none;
+
+    color: black;
+}
+.searchTopButton#searchButton1{
+    position: absolute;
+    top: 0;
+
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    border: 2px solid black;
+    border-left: none;
+    background: deepskyblue;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,122 @@
+ body{
+     margin: 0;
+     padding: 0;
+
+
+ }
+ .enter{
+     position: fixed;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background: deepskyblue;
+
+ }
+.enterDiv{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: inset 0 50px 150px rgba(0,0,0,1);
+    border-bottom : 2px solid #fff;
+    animation:  animate 1s ease-in-out forwards;
+
+
+}
+@keyframes animate {
+    0%{
+        transform: translate(-50%,-50%) scale(0);
+    }
+    100%{
+        transform: translate(-50%,-50%) scale(1);
+
+    }
+}
+ /*@keyframes backAnimate {*/
+ /*    100%{*/
+ /*        transform: translatey(150%) scale(1);*/
+ /*    }*/
+
+ /*}*/
+
+.enterDiv:nth-child(1){
+    width: 1500px;
+    height: 1500px;
+animation-delay: 0s;
+
+}
+ .enterDiv:nth-child(2){
+     width: 1250px;
+     height: 1250px;
+     animation-delay: 0.5s;
+ }
+ .enterDiv:nth-child(3){
+     width: 1000px;
+     height: 1000px;
+     animation-delay: 1s;
+ }
+ .enterDiv:nth-child(4){
+     width: 750px;
+     height: 750px;
+     animation-delay: 1.5s;
+ }
+ .enterDiv:nth-child(5){
+     width: 500px;
+     height: 500px;
+     animation-delay: 2s;
+ }
+ .enterDiv:nth-child(5) img{
+     max-width: 250px;
+     z-index: -1;
+     transform: translateY(500px);
+     animation: animateLogo 1s ease-in-out forwards;
+     animation-delay: 3s;
+ }
+ @keyframes animateLogo {
+     0%{
+         transform: translateY(500px);
+     }
+     100%{
+         transform: translateY(0px);
+
+     }
+
+ }
+ .logo{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     animation: backAnimate 1s ease-in-out forwards;
+     animation-delay: 5s;
+
+   }
+ .logoText{
+     visibility: hidden;
+     position: absolute;
+     max-width: 250px;
+  text-align: center;
+     transform: translateY(500px);
+     color: white;
+     font-size: 30px;
+    animation: animateText 1s ease-in-out forwards;
+     animation-delay: 1s;
+ }
+ @keyframes animateText {
+
+     0%{
+
+         transform: translateY(500px);
+     }
+     100%{
+         transform: translateY(0px);
+
+     }
+
+ }

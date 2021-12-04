@@ -1,0 +1,119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+
+}
+.contactHead{
+    color: white;
+    display: flex;
+    position: absolute;
+    justify-content:center;
+    align-items: center;
+}
+.contactContainer {
+    position: relative;
+    display: flex;
+     left: 100px;
+    top: 180px;
+}
+
+.contactContainer .contactCard {
+    position: relative;
+    width: 600px;
+    height: 350px;
+    margin: 20px;
+    display: flex;
+    transition: 0.5s;
+    justify-content: flex-start;
+    align-items: center;
+     border: 2px solid white;
+}
+
+.contactContainer .contactCard img{
+    position: absolute;
+    bottom: 0;
+    height: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: 0.5s;
+
+}
+.contactContainer .contactCard:hover img{
+    left: 75%;
+    height: 500px;
+
+}
+.contactContainer .contactCard#contact2:hover img{
+    left: 58%;
+    height: 500px;
+
+}
+
+.contactContainer .contactCard .contactContent{
+    position: relative;
+    width: 50%;
+    left: 20%;
+    padding: 20px 20px 20px 20px;
+    transition: 0.5s;
+    opacity: 0;
+    visibility: hidden;
+}
+.contactContainer .contactCard .contactContent h2{
+    color: white;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
+
+}
+.contactContainer .contactCard .contactContent p{
+    color: white;
+}
+.contactContainer .contactCard:hover .contactContent{
+left: 0;
+    opacity: 1;
+    visibility: visible;
+}
+@media (max-width: 991px) {
+    .contactContainer .contactCard{
+        width: auto;
+        max-width: 600px;
+        align-items: flex-start;
+    }
+    .contactContainer .contactCard:hover{
+        height: 600px;
+    }
+    .contactContainer .contactCard:hover img {
+        left: 50%;
+        height: 500px;
+    }
+    .contactContainer .contactCard .contactContent{
+        width: 100%;
+        left: 0;
+        padding: 40px;
+    }
+}
+@media (max-width: 767px) {
+    .contactContainer{
+        flex-direction: column;
+    }
+    .contactContainer .contactCard{
+        margin: 40px 20px;
+    }
+}
+@media (max-width: 420px) {
+
+    .contactContainer .contactCard .contactContent{
+       padding: 30px;
+    }
+    .contactContainer .contactCard:hover img{
+        left: 50%;
+        height: 300px;
+    }
+}

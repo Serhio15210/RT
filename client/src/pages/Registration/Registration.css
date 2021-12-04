@@ -1,0 +1,15 @@
+.registration {
+    position: relative;
+    display: flex;
+    left: 500px;
+    height: auto;
+}
+
+.reg {
+    display: inline-block;
+    height:auto
+}
+.auth-button {
+    display: flex;
+    margin-right: 5px;
+}

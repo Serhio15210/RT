@@ -1,0 +1,9 @@
+.posts{
+    border: 2px white solid;
+    border-radius: 10px; /* Радиус скругления */
+    margin: 10px;
+    cursor: pointer;
+}
+.itemButton{
+    margin-left: 47%;
+}
