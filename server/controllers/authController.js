@@ -62,6 +62,16 @@ class authController{
             console.log(e)
         }
     }
+    
+        async getUserOne(req, res) {
+        try {
+            const {id} = req.params
+            const post = await User.findById(id)
+            return res.json(post)
+        } catch (e) {
+            res.status(500).json(e)
+        }
+    }
 
     async update(req, res){
         try {
