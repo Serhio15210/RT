@@ -11,7 +11,7 @@ class Api_controller {
                     "Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAHHnVgEAAAAALpaUElWFhCgLmObkYTE2%2Bubovv4%3DElqZqTBmccsR4MI9BKDp7ePhevUNwIquBdkeeyfprWDIkn8EZk"
                 }
             })
-        console.log(response.data)
+
         return res.json(response.data)
     }
 

@@ -17,7 +17,7 @@ class authController{
     async registration(req, res){
         try {
             const {name, surname, country, phone, email, nickname, password} = req.body
-            const data = {name, surname, country, phone, email, nickname}
+            const data = {name, email,nickname,password}
             const candidate = await User.findOne({email})
             if (candidate) {
                 return res.status(400).json({message: 'Пользователь с таким E-mail уже сущесвует'})
@@ -34,20 +34,23 @@ class authController{
 
     async login(req, res){
         try {
+            console.log(req.body)
             const {email, password} = req.body
+            console.log(email, typeof email)
+            console.log(password, typeof password)
             const user = await User.findOne({email})
             if (!user) {
                 return res.status(400).json({message: 'Пользователь с таким E-mail не найден'})
             }
-            const validPassword = bcrypt.compareSync(password, user._doc.password)
+            const validPassword = bcrypt.compareSync(password, user.password)
             if (!validPassword) {
                 return res.status(400).json({message: 'Введен неверный пароль'})
             }
-            const token = generateAccessToken(user._doc._id, user._doc.roles )
+            const token = generateAccessToken(user._id, user.roles)
             return res.json({token})
         } catch (e) {
             console.log(e)
-            return res.status(400).json({message: 'Ошибка при логине'})
+            return res.status(400).json({message: 'Ошибка при логине', e})
         }
     }
 
