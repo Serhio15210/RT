@@ -8,15 +8,15 @@ import {AuthContext} from "../../context";
 const Theme = ({themeArray}) => {
 
     const [themeMark,setThemeMark]=useState({
-        'Спорт': false,
-        "Бизнесс": false,
-        "Мода": false,
-        "Медицина": false,
-        "Кино": false,
-        "Искусство": false,
-        "Музіка": false,
+        'Sport': false,
+        "Business": false,
+        "Fashion": false,
+        "Medicine": false,
+        "Cinema": false,
+        "Arts": false,
+        "Music": false,
         "IT": false,
-        "Игры": false,
+        "Games": false,
     })
 
     const setMark=(theme,bool)=>{

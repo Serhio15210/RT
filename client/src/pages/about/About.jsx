@@ -33,6 +33,42 @@ const About = () => {
                 <input type="radio" name="slider" id="slide2" />
                 <input type="radio" name="slider" id="slide3" />
                 <input type="radio" name="slider" id="slide4"/>
+                <div id="slides">
+                    <div id="overflow">
+                        <div className="inner">
+                            <div className="slide slide_1">
+                                <div className="slide-content">
+                                    <h2>Вас прветсттвует ReperioTweet!</h2>
+                                    <p>Content for Slide1</p>
+                                </div>
+                            </div>
+                            <div className="slide slide_1">
+                                <div className="slide-content">
+                                    <h2>Slide 2</h2>
+                                    <p>Content for Slide1</p>
+                                </div>
+                            </div>
+                            <div className="slide slide_1">
+                                <div className="slide-content">
+                                    <h2>Slide 3</h2>
+                                    <p>Content for Slide1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="controls">
+                    <label for="slide1"/>
+                    <label for="slide2"/>
+                    <label for="slide3"/>
+                    <label for="slide4"/>
+                </div>
+                <div id="bullets">
+                    <label htmlFor="slide1"/>
+                    <label htmlFor="slide2"/>
+                    <label htmlFor="slide3"/>
+                    <label htmlFor="slide4"/>
+                </div>
             </div>
         </>
 

@@ -60,26 +60,24 @@ const TopNews = () => {
 
 
     return (
-        <>
-            <div className="home container-fluid  ">
+        <div className="home container-fluid ">
 
-                <div className="TopNews justify-content-center bg-black">
-                    <div className="newsHeader">
-                        <h1 style={{color: "white", textAlign: "center"}}>Top News</h1>
+            <div className="TopNews   container-xl  ">
+                <div className="topNewsHeader">
+                    <h1 style={{color: "white", left: 20,fontSize:100,textAlign:"center"}}>Hot News</h1>
 
-                        <div className="pagination">
-                            <Pagination
-                                page={page}
-                                changePage={changePage}
-                                totalPage={totalPage}/>
-                        </div>
-                        <div className="input-group search justify-content-center">
-                            <form action="" method="get">
-                                <input name="s" placeholder="Search news" value={query} onChange={(e) =>
-                                    setQuery(e.target.value)} type="search" className="searchTop"/>
-                                <button type="submit" className="fas fa-search searchTopButton"/>
-                            </form>
-                        </div>
+                    <div className="topPagination">
+                        <Pagination
+                            page={page}
+                            changePage={changePage}
+                            totalPage={totalPage}/>
+                    </div>
+                    <div className="input-group search justify-content-center">
+                        <form action="" method="get">
+                            <input name="s" placeholder="Search news" value={query} onChange={(e) =>
+                                setQuery(e.target.value)} type="search" className="searchTop"/>
+                            <button type="submit" className="fas fa-search searchTopButton"></button>
+                        </form>
                     </div>
                 </div>
                 <div className="topNews container-fluid ">
@@ -87,20 +85,23 @@ const TopNews = () => {
                     {isPostsLoading &&
                     <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
                     }
+
                     <PostList posts={filteredPosts}/>
-                    <div className="navButtons">
-                        <MyButtons>Prev</MyButtons>
-                        <MyButtons>Next</MyButtons>
-                    </div>
+                    {/*:*/}
+                    {/*<h1 style={{textAlign:"center"}}>Posts not found</h1>*/}
+
+
                 </div>
-                <a href="#" className="scrollup "><i className="fas fa-arrow-up m-lg-2"
-                                                     style={{fontSize: '40px', color: "white"}}> </i></a>
             </div>
 
-        </>
+
+            <a href="#" className="scrollup "><i className="fas fa-arrow-up m-lg-2"
+                                                 style={{fontSize: '40px', color: "white"}}> </i></a>
+
+        </div>
 
 
-            );
+    );
             };
 
             export default TopNews;

@@ -7,7 +7,7 @@ const User = new Schema({
     phone: {type: String},
     email: {type: String, unique: true, required: true},
     nickname: {type: String, required: true},
-    privilege: {type: String},
+    themes:  [],
     roles: [{type: String, ref: 'Role'}],
     password: {type: String, required: true}
 })

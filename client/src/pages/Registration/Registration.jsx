@@ -1,76 +1,75 @@
 import React, {useContext, useEffect, useState} from 'react';
-import MyButtons from "../../UI/buttons/MyButtons";
 import './Registration.css'
-import Themes from "../Themes/Themes";
-import {Link, useLocation} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 import {AuthContext} from "../../context";
-import Footer from "../Footer/Footer";
+
 import {Form} from "react-bootstrap";
 import {useInput} from "../../hooks/useInput";
 import {useValidation} from "../../hooks/useValidation";
 import {red} from "@material-ui/core/colors";
 import {login, registration} from "../../http/UserAPI";
-import {observer} from "mobx-react-lite";
+import Themes from "../Themes/Themes";
 
 
-const Registration =() => {
-    const {user}=useContext(AuthContext)
-        const firstName = useInput('', {isEmpty: true, minLength: 3})
-        const lastName = useInput('', {minLength: 3})
-        const email = useInput('', {isEmpty: true, minLength: 8, isEmail: true})
-        const phone = useInput('', {isPhoneValid: true})
-        const country = useInput('',{minLength:3})
-        const nick = useInput('', {isEmpty: true, minLength: 3})
-        const password = useInput('', {isEmpty: true,isValidPassword:true})
-        const repeatedPassword = useInput('', {isEmpty: true,isValidPassword:true})
+
+const Registration = () => {
+    const {user} = useContext(AuthContext)
+    const name = useInput('', {isEmpty: true, minLength: 3})
+    const surname = useInput('', {minLength: 3})
+    const email = useInput('', {isEmpty: true, minLength: 8, isEmail: true})
+    const phone = useInput('', {isPhoneValid: true})
+    const country = useInput('', {isEmpty:true,minLength: 3})
+    const nickname = useInput('', {isEmpty: true, minLength: 3})
+    const password = useInput('', {isEmpty: true, isValidPassword: true})
+    const repeatedPassword = useInput('', {isEmpty: true, isValidPassword: true})
+    const [themes,setThemes]=useState([])
     const location = useLocation()
-    const history=useHistory()
+    const history = useHistory()
 
-    const click = async()=>{
-            try {
-                let data;
-                data = await registration(firstName.value,email.value,nick.value, password.value,lastName.value,phone.value,country.value);
-                console.log(data)
-                setIsAuth(true)
-                localStorage.setItem('auth', 'true')
+    const click = async () => {
 
-            } catch (e) {
-                alert(e.response.data.message)
+            let data;
+            data = await registration(name.value, email.value, nickname.value, password.value, surname.value, phone.value, country.value,themes);
+            console.log(data)
+            setIsAuth(true)
+            localStorage.setItem('auth', 'true')
 
 
-        }
+
 
     }
-    const {setSignUp, setIsAuth} = useContext(AuthContext)
+    const {isSignUp, setIsAuth,setSignUp} = useContext(AuthContext)
 
 
     return (
+
         <div className="fullContainer">
             <div className="container-fluid registration">
 
-                <Form className="form-horizontal reg"  >
+                <Form className="form-horizontal reg">
                     <span className="heading">Registration</span>
-                    {/*{(firstName.isDirty && firstName.minLengthError && !firstName.isEmpty) &&*/}
-                    {/*<p style={{color: "red"}}>Name should be as min 3 letters</p>}*/}
+                    {(name.isDirty && name.minLengthError && !name.isEmpty) &&
+                    <p style={{color: "red"}}>Name should be as min 3 letters</p>}
 
                     <div className="form-group  ">
 
                         <input type="name" className="form-control" id="inputName"
-                               value={firstName.value} onChange={e => firstName.onChange(e)} onBlur={e => firstName.onBlur(e)}
-                               placeholder={firstName.isDirty && firstName.isEmpty ? "Name could not be empty *" : `Name *`}/>
-                        <i className="fa fa-user" style={firstName.isDirty && firstName.isEmpty ? {color: "red"} : {}}/>
+                               value={name.value} onChange={e =>name.onChange(e)}
+                               onBlur={e => name.onBlur(e)}
+                               placeholder={name.isDirty && name.isEmpty ? "Name could not be empty *" : `Name *`}/>
+                        <i className="fa fa-user" style={name.isDirty && name.isEmpty ? {color: "red"} : {}}/>
 
                     </div>
-                    {/*{(lastName.isDirty && lastName.minLengthError && lastName.value) &&*/}
-                    {/*<p style={{color: "red"}}>Surname should be as min 3 letters</p>}*/}
+                    {(surname.isDirty && surname.minLengthError && surname.value) &&
+                    <p style={{color: "red"}}>Surname should be as min 3 letters</p>}
                     <div className="form-group"><input type="name" className="form-control" id="inputSurName"
-                                                       value={lastName.value} onChange={e => lastName.onChange(e)}
-                                                       onBlur={e => lastName.onBlur(e)}
+                                                       value={surname.value} onChange={e => surname.onChange(e)}
+                                                       onBlur={e => surname.onBlur(e)}
                                                        placeholder="Surname"/>
                         <i className="fa fa-user"/></div>
-                    {/*{(country.isDirty && country.minLengthError && country.value) &&*/}
-                    {/*<p style={{color: "red"}}>Country should be as min 3 letters</p>}*/}
+                    {(country.isDirty && country.minLengthError && country.value) &&
+                    <p style={{color: "red"}}>Country should be as min 3 letters</p>}
                     <div className="form-group"><input type="country" className="form-control" id="inputCountry"
                                                        value={country.value} onChange={e => country.onChange(e)}
                                                        onBlur={e => country.onBlur(e)}
@@ -82,8 +81,8 @@ const Registration =() => {
                                                        value={phone.value} onChange={e => phone.onChange(e)}
                                                        onBlur={e => phone.onBlur(e)} placeholder="Phone"/>
                         <i className="fas fa-phone"/></div>
-                    {/*{(email.isDirty && email.emailError && !email.isEmpty) &&*/}
-                    {/*<p style={{color: "red"}}>Wrong type of email</p>}*/}
+                    {(email.isDirty && email.emailError && !email.isEmpty) &&
+                    <p style={{color: "red"}}>Wrong type of email</p>}
                     <div className="form-group">
                         <input type="email" className="form-control" id="inputEmail"
                                value={email.value} onChange={e => email.onChange(e)}
@@ -92,20 +91,20 @@ const Registration =() => {
                         <i className="fas fa-envelope-square"
                            style={(email.isDirty && email.isEmpty) || (email.isDirty && email.emailError) ? {color: "red"} : {}}/>
                     </div>
-                    {/*{(nick.isDirty && nick.minLengthError && !nick.isEmpty) &&*/}
-                    {/*<p style={{color: "red"}}>NickName should be as min 3 letters</p>}*/}
+                    {(nickname.isDirty && nickname.minLengthError && !nickname.isEmpty) &&
+                    <p style={{color: "red"}}>NickName should be as min 3 letters</p>}
                     <div className="form-group"><input type="name" className="form-control" id="inputNick"
-                                                       value={nick.value} onChange={e => nick.onChange(e)}
-                                                       onBlur={e => nick.onBlur(e)}
-                                                       placeholder={nick.isDirty && nick.isEmpty ? "Nickname could not be empty *" : "Create nickname *"}/>
-                        <i className="fa fa-user" style={nick.isDirty && nick.isEmpty ? {color: "red"} : {}}/>
+                                                       value={nickname.value} onChange={e => nickname.onChange(e)}
+                                                       onBlur={e => nickname.onBlur(e)}
+                                                       placeholder={nickname.isDirty && nickname.isEmpty ? "Nickname could not be empty *" : "Create nickname *"}/>
+                        <i className="fa fa-user" style={nickname.isDirty && nickname.isEmpty ? {color: "red"} : {}}/>
                     </div>
 
-                    {/*{(password.isDirty && password.validPasswordError && !password.isEmpty) &&*/}
-                    {/*<p style={{color: "red"}}>Password should be between 8 and 15 characters which contain at least one*/}
-                    {/*    lowercase letter, one uppercase letter, one numeric digit, and one special character</p>}*/}
+                    {(password.isDirty && password.validPasswordError && !password.isEmpty) &&
+                    <p style={{color: "red"}}>Password should be between 8 and 15 characters which contain at least one
+                        lowercase letter, one uppercase letter, one numeric digit, and one special character</p>}
                     <div className="form-group help">
-                        <input type="password" className="form-control" id="inputPassword"
+                        <input type="password" className="form-control" id="Password"
                                value={password.value} onChange={e => password.onChange(e)}
                                onBlur={e => password.onBlur(e)}
                                placeholder={password.isDirty && password.isEmpty ? "Password could not be empty *" : "Password *"}/>
@@ -113,8 +112,8 @@ const Registration =() => {
                            style={password.isDirty && password.isEmpty ? {color: "red"} : {}}/>
 
                     </div>
-                    {/*{(password.isDirty && repeatedPassword.value !== password.value) &&*/}
-                    {/*<p style={{color: "red"}}>Password mismatch</p>}*/}
+                    {(password.isDirty && repeatedPassword.value !== password.value) &&
+                    <p style={{color: "red"}}>Password mismatch</p>}
                     <div className="form-group help"><input type="password" className="form-control"
                                                             value={repeatedPassword.value}
                                                             onChange={e => repeatedPassword.onChange(e)}
@@ -124,12 +123,18 @@ const Registration =() => {
                         <i className="fa fa-lock"
                            style={repeatedPassword.isDirty && repeatedPassword.isEmpty ? {color: "red"} : {}}/>
                     </div>
+                    {/*<div className="form-group help">*/}
+                    {/*    <input type="text" className="form-control" id="inputPassword"*/}
+                    {/*           value={themes.value} onChange={e => themes.push(e.target.value)}*/}
+                    {/*           onBlur={e => themes.onBlur(e)}*/}
+                    {/*           placeholder=""/>*/}
 
+                    {/*</div>*/}
 
-                    <button type="submit"
-                        // disabled={!email.inputValid || !firstName.inputValid || !nick.inputValid || !password.inputValid||repeatedPassword.value!==password.value}
+                    <button
+                        disabled={!email.inputValid|| !name.inputValid  || !nickname.inputValid  || !password.inputValid }
                             className="btn btn-default auth-button" onClick={click}>
-                         Authorisation
+                        Authorisation
                     </button>
 
                 </Form>

@@ -34,7 +34,7 @@ export const useValidation = (value, validations) => {
         if (isEmpty || minLengthError || emailError||validPasswordError ) {
             setInputValid(false)
         } else setInputValid(true)
-    }, [isEmpty, minLengthError, emailError])
+    }, [isEmpty, minLengthError, emailError,validPasswordError])
     return {
         isEmpty, minLengthError, inputValid, emailError,validPasswordError,validPhoneError
     }

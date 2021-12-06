@@ -37,13 +37,13 @@
 
 }
 
-/*.home {*/
-/*    position: absolute;*/
+.home {
+    position: absolute;
 
-/*    left: 0px;*/
-/*    width: 100%;*/
-/*    max-height: 100%;*/
-
+    left: 0px;
+    width: 100%;
+    max-height: 100%;
+}
 
 
 /*}*/
@@ -66,6 +66,7 @@
     left: 0;
     border-radius: 2px;
 
+
 }
 
 .filter {
@@ -84,11 +85,34 @@
     width: 300px;
     left: 0px;
     top: 150px;
+    height: 300px;
     border-top: 1px solid white;
     box-sizing: border-box;
+}
 
+.regContainer {
+    position: relative;
+    justify-content: center;
+    width: 300px;
+    height: 500px;
+    overflow: auto;
 
+}
 
+.regContainer::-webkit-scrollbar {
+    width: 10px;
+}
+
+.regContainer::-webkit-scrollbar-track {
+    -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+    background-color: #f9f9fd;
+    border-radius: 10px;
+}
+
+.regContainer::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: deepskyblue;
+    border: 1px solid black;
 }
 
 .newsHeader h1 {
@@ -118,32 +142,34 @@
     font-size: large;
     font-weight: bolder;
     position: relative;
-    background: linear-gradient(145deg, blue,   deepskyblue, deepskyblue, blue) no-repeat center center fixed;
+    background: linear-gradient(145deg, blue, deepskyblue, deepskyblue, blue) no-repeat center center fixed;
 
     color: white;
     cursor: pointer;
     line-height: 1; /*задаём высоту строки*/
     text-decoration: none; /*убираем подчёркивание*/
 }
+
 .chooseChek {
     padding: 18px;
     font-size: large;
     font-weight: bolder;
     position: relative;
-    background: linear-gradient(145deg, blue,   deepskyblue, deepskyblue, blue) no-repeat center center fixed;
+    background: linear-gradient(145deg, blue, deepskyblue, deepskyblue, blue) no-repeat center center fixed;
 
     color: white;
     cursor: pointer;
     line-height: 1; /*задаём высоту строки*/
     text-decoration: none; /*убираем подчёркивание*/
 }
-.chooseChek:after{
+
+.chooseChek:after {
     display: block;
     position: absolute;
     left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
     width: 0; /*задаём длинну линии до наведения курсора*/
     height: 2px; /*задаём ширину линии*/
-    background-color: mediumvioletred; /*задаём цвет линии*/
+    background-color: white; /*задаём цвет линии*/
     content: "";
     transition: width 0.3s ease-out; /*задаём время анимации*/
 }
@@ -159,11 +185,13 @@
     transition: width 0.3s ease-out; /*задаём время анимации*/
 
 }
+
 .chooseChek:focus:after,
 .chooseChek:hover:after {
     width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
 
 }
+
 .choose:focus:after,
 .choose:hover:after {
     width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
@@ -194,47 +222,68 @@
 
 }
 
+.topNewsHeader {
+    position: absolute;
+    width: 1000px;
+    height: 200px;
+    top: 25px;
+    border-bottom: 1px solid white;
+    padding-bottom: 250px;
+
+
+}
+
 .pagination {
     position: absolute;
     left: 480px;
     top: 160px;
 }
 
-.scrollup{
-    width:40px;
-    height:40px;
-    opacity:0.5;
-    position:fixed;
-    bottom:50px;
-    right:50px;
+.topPagination {
+    position: absolute;
+    left: 480px;
+    top: 210px;
+}
 
+.scrollup {
+    width: 40px;
+    height: 40px;
+    opacity: 0.5;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
 
 
 }
-.TopNews{
-     position: relative;
+
+.TopNews {
+    position: relative;
+
     margin: auto;
-    left: 200px;
     width: 1000px;
     height: max-content;
     top: 30px;
 
 
 }
-.newsHeader h1{
+
+.newsHeader h1 {
     width: 800px;
     position: relative;
     margin: auto;
 
+
 }
-.topNews{
+
+.topNews {
     position: relative;
     margin: auto;
     top: 280px;
-    left: 190px;
-    width: 70%;
+
+    width: 100%;
 }
-.searchTop{
+
+.searchTop {
     width: 350px;
     height: 42px;
     padding-left: 10px;
@@ -246,7 +295,8 @@
 
     color: black;
 }
-.searchTopButton{
+
+.searchTopButton {
     position: absolute;
     top: 0;
     right: 10px;
@@ -258,6 +308,7 @@
     border-radius: 0 5px 5px 0;
     cursor: pointer;
 }
+
 .searchTop button:before {
     content: "\f002";
     font-family: FontAwesome, serif;
@@ -270,16 +321,19 @@
     font-style: italic;
     background: white;
 }
+
 .searchTop:-moz-placeholder {
     color: black;
     font-style: italic;
     background: black;
 }
+
 .searchTop:-ms-input-placeholder {
     color: black;
     font-style: italic;
     background: black;
 }
+
 .search form {
 
     position: relative;
@@ -287,7 +341,8 @@
     margin: 0 auto;
 
 }
-.searchTop#searchTop1{
+
+.searchTop#searchTop1 {
     width: 250px;
     height: 42px;
     padding-left: 10px;
@@ -299,7 +354,8 @@
 
     color: black;
 }
-.searchTopButton#searchButton1{
+
+.searchTopButton#searchButton1 {
     position: absolute;
     top: 0;
 
@@ -312,5 +368,25 @@
     border-radius: 0 5px 5px 0;
     cursor: pointer;
 }
+.listCategory{
+    position: relative;
+    right: 20px;
+    width: 150px;
+    border:1px solid black;
+}
+.listCategory:hover{
+    border:1px solid white;
+}
 
+.addThemes{
+    display: flex;
+    width: 150px;
+    height: 100px;
+    padding: 35px;
+    color: white;
+}
+.addThemes:hover{
+    background: white;
+    color: black;
+}
 

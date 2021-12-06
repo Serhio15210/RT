@@ -37,7 +37,8 @@ export const publicRoutes=[
     {path:'/registration',component:Registration,exact:true},
     {path:'/about',component:About,exact:true},
     {path:'/contacts',component:Contacts,exact:true},
-    {path:'/help',component:ModalHelp,exact:true}
+    {path:'/help',component:ModalHelp,exact:true},
+    {path:'/themes',component:Themes,exact:true}
 
 
 ]

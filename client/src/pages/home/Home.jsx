@@ -16,6 +16,7 @@ import {AuthContext} from "../../context";
 import Loader from "../../UI/Loader/Loader";
 import {usePosts} from "../../hooks/usePost";
 import {useObserver} from "mobx-react-lite";
+import {useHistory} from "react-router-dom";
 
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
     const [page, setPage] = useState(1)
     const {themeArray} = useContext(AuthContext)
     const [query, setQuery] = useState('')
+    const history=useHistory()
 
     const changePage = (page) => {
         setPage(page)
@@ -80,10 +82,10 @@ const Home = () => {
                     {isPostsLoading &&
                     <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
                     }
-
+                    {filteredPosts?
                     <PostList posts={filteredPosts}/>
-                    {/*:*/}
-                    {/*<h1 style={{textAlign:"center"}}>Posts not found</h1>*/}
+                    :
+                    <h1 style={{textAlign:"center"}}>Posts not found</h1>}
 
 
                 </div>
@@ -93,6 +95,7 @@ const Home = () => {
 
                 <h1 className="text-center">Filtres</h1>
                 <div className="input-group search justify-content-center">
+
                     <form action="" method="get" style={{width: '300px'}}>
                         <input name="s" placeholder="Search news" value={query}
                                onChange={e => setQuery(e.target.value)} type="search"
@@ -100,7 +103,11 @@ const Home = () => {
                         <button type="submit" className="fas fa-search searchTopButton" id="searchButton1"/>
                     </form>
                 </div>
-                <Categories array={posts} setArray={setPosts}/>
+
+
+                        <Categories posts={posts}   setPosts={setPosts}/>
+
+
             </div>
 
             <a href="#" className="scrollup "><i className="fas fa-arrow-up m-lg-2"

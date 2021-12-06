@@ -19,6 +19,7 @@ const App = observer(() => {
     const [avatar,setAvatar]=useState(null)
     const themeArray=[]
         useEffect(()=>{
+            setSignUp(false)
             if (localStorage.getItem('auth')&&localStorage.getItem('token')){
                 setIsAuth(true)
                 localStorage.getItem('themeArray')&&themeArray.push(localStorage.getItem('themeArray'))

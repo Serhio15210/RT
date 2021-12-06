@@ -66,7 +66,7 @@ const Authorisation = () => {
 
                         <span className="text">Remember me</span>
 
-                        <button type="submit" className="btn btn-default"  onClick={click} disabled={!password.inputValid||!email.inputValid}>ENTER</button>
+                        <button className="btn btn-default"  onClick={click} disabled={!password.inputValid||!email.inputValid}>ENTER</button>
                         <Button  className="forgot " onClick={e=>setModal(true)}>Forgot your password?</Button>
                         <ModalHelp modal={modal} setModalWindow={setModal}/>
                     </div>

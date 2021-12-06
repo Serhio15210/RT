@@ -14,17 +14,18 @@ const Settings = () => {
 
     const {avatar, setAvatar, isAuth, setIsAuth} = useContext(AuthContext)
     const [modal, setModal] = useState(false)
-    const firstName = useInput('', {isEmpty: true, minLength: 3})
-    const lastName = useInput('', {minLength: 3})
+    const name = useInput('', {isEmpty: true, minLength: 3})
+    const surname = useInput('', {minLength: 3})
     const email = useInput('', {isEmpty: true, minLength: 8, isEmail: true})
     const phone = useInput('', {isPhoneValid: true})
     const country = useInput('', {isEmpty: true, minLength: 3})
-    const nick = useInput('', {isEmpty: true, minLength: 3})
+    const nickname = useInput('', {isEmpty: true, minLength: 3})
     const password = useInput('', {isEmpty: true, isValidPassword: true})
     const repeatedPassword = useInput('', {isEmpty: true, isValidPassword: true})
     const [user, setUser] = useState([])
     const [isEditModal, setEditModal] = useState(false)
     const history = useHistory()
+    let updateArray=[]
     const userOne = async () => {
         const {data} = await $authHost.get(`auth/user_one`)
         return data
@@ -37,7 +38,7 @@ const Settings = () => {
     const edit = async () => {
         try {
             let data;
-            data = await $authHost.put('auth/update');
+            data = await $authHost.put('auth/update',{name:name.value,surname:surname.value,email:email.value,phone:phone.value,country:country.value,nickname:nickname.value,password:password.value});
             console.log(data)
             alert(data ? 'Edit success' : 'Edit canceled')
 
@@ -93,19 +94,19 @@ const Settings = () => {
             </div>
             <ul className="editContent">
                 <li style={{listStyleType: "none"}}>
-                    {(firstName.isDirty && firstName.minLengthError && !firstName.isEmpty) &&
+                    {(name.isDirty && name.minLengthError && !name.isEmpty) &&
                     <p style={{color: "red"}}>Name should be as min 3 letters</p>}
                     <div className="editItems">
-                        <input type="name" id="inputName" value={firstName.value} onChange={e => firstName.onChange(e)}
-                               onBlur={e => firstName.onBlur(e)} placeholder={"Name:" + user.name}/>
+                        <input type="name" id="inputName" value={name.value} onChange={e => name.onChange(e)}
+                               onBlur={e => name.onBlur(e)} placeholder={"Name:" + user.name}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {(lastName.isDirty && lastName.minLengthError && lastName.value) &&
+                    {(surname.isDirty && surname.minLengthError && surname.value) &&
                     <p style={{color: "red"}}>Surname should be as min 3 letters</p>}
                     <div className="editItems">
-                        <input type="name" id="inputName" value={lastName.value} onChange={e => lastName.onChange(e)}
-                               onBlur={e => lastName.onBlur(e)}
+                        <input type="name" id="inputName" value={surname.value} onChange={e => surname.onChange(e)}
+                               onBlur={e => surname.onBlur(e)}
                                placeholder={user.surname ? "Surname:" + user.surname : "Surname"}/>
                     </div>
                 </li>
@@ -137,11 +138,11 @@ const Settings = () => {
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {(nick.isDirty && nick.minLengthError && !nick.isEmpty) &&
+                    {(nickname.isDirty && nickname.minLengthError && !nickname.isEmpty) &&
                     <p style={{color: "red"}}>NickName should be as min 3 letters</p>}
                     <div className="editItems">
-                        <input type="name" id="inputNick" value={nick.value} onChange={e => nick.onChange(e)}
-                               onBlur={e => nick.onBlur(e)} placeholder={"Nickname:" + user.nickname}/>
+                        <input type="name" id="inputNick" value={nickname.value} onChange={e => nickname.onChange(e)}
+                               onBlur={e => nickname.onBlur(e)} placeholder={"Nickname:" + user.nickname}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>

@@ -4,14 +4,21 @@ import {Transition} from 'react-transition-group';
 import {NavLink} from "react-router-dom";
 import Theme from "./Theme";
 import {AuthContext} from "../../context";
+import {$authHost} from "../../http";
 
-const Themes = () => {
+const Themes = ( ) => {
     const [skip, setSkip] = useState(false)
     const {themeArray} = useContext(AuthContext)
     const setSkipButton=()=>{
         setSkip(true)
         themeArray.length=0
+
     }
+    const updateThemes=async () => {
+        const response = await $authHost.put('/auth/update',{themes:themeArray})
+        console.log(response.data)
+    }
+
     return (
         <div className="themes">
             <div className="themeHead "><h1>Choose a topic that interests you </h1>
@@ -38,8 +45,8 @@ const Themes = () => {
             {/*    <div className="   theme" id="t8"> <span><h2>IT</h2></span></div>*/}
             {/*    <div className="   theme" id="t9"> <span><h2>Games</h2></span></div>*/}
             {/*</div>*/}
-            <NavLink to="/home" className="continueLink  ">
-                <i style={{textDecoration: 'underline'}}>Continue</i>
+            <NavLink to="/home" className="continueLink" >
+                <i style={{textDecoration: 'underline'}}  onClick={updateThemes}>Continue</i>
             </NavLink>
 
         </div>

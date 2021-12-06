@@ -2,11 +2,11 @@ import {$authHost, $host} from "./index";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
-export const registration = async (firstname, email, nick, password) => {
-    const payload = {firstname, email, nick, password}
-    console.log(payload)
+export const registration = async (name, email, nickname, password,surname,phone,country,themes) => {
+    const payload = {name, email, nickname, password,themes}
+
     const {data} = await $host.post('auth/registration', payload)
-    console.log(data)
+
     return jwtDecode(data.value)
 }
 

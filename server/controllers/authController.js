@@ -16,8 +16,8 @@ const generateAccessToken = (id, roles) => {
 class authController{
     async registration(req, res){
         try {
-            const {name, surname, country, phone, email, nickname, password} = req.body
-            const data = {name, email,nickname,password}
+            const {name, surname, country, phone, email, nickname, password,themes} = req.body
+            const data = {name, email,nickname,password,themes}
             const candidate = await User.findOne({email})
             if (candidate) {
                 return res.status(400).json({message: 'Пользователь с таким E-mail уже сущесвует'})
