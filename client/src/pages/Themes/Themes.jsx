@@ -15,7 +15,8 @@ const Themes = ( ) => {
 
     }
     const updateThemes=async () => {
-        const response = await $authHost.put('/auth/update',{themes:themeArray})
+        console.log(themeArray)
+        const response = await $authHost.put('/auth/update',{themes: themeArray})
         console.log(response.data)
     }
 

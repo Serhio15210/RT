@@ -9,7 +9,7 @@ const PostItem = (props) => {
     return (
         <div className=" posts" >
             <div className="p-2">
-                <strong>{props.post.id}.</strong>
+                <strong>{props.post.text.toString().split(" ")[1]}.</strong>
             </div>
             <div  className="items">
                 {props.post.text}

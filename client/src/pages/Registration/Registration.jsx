@@ -27,17 +27,13 @@ const Registration = () => {
     const location = useLocation()
     const history = useHistory()
 
-    const click = async () => {
+    const click =  () => {
 
             let data;
-            data = await registration(name.value, email.value, nickname.value, password.value, surname.value, phone.value, country.value,themes);
+            data =  registration(name.value, email.value, nickname.value, password.value, surname.value, phone.value, country.value,themes);
             console.log(data)
             setIsAuth(true)
             localStorage.setItem('auth', 'true')
-
-
-
-
     }
     const {isSignUp, setIsAuth,setSignUp} = useContext(AuthContext)
 

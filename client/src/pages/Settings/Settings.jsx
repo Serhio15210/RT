@@ -14,7 +14,7 @@ const Settings = () => {
 
     const {avatar, setAvatar, isAuth, setIsAuth} = useContext(AuthContext)
     const [modal, setModal] = useState(false)
-    const name = useInput('', {isEmpty: true, minLength: 3})
+    const name = useInput('', {minLength: 3})
     const surname = useInput('', {minLength: 3})
     const email = useInput('', {isEmpty: true, minLength: 8, isEmail: true})
     const phone = useInput('', {isPhoneValid: true})
@@ -94,11 +94,11 @@ const Settings = () => {
             </div>
             <ul className="editContent">
                 <li style={{listStyleType: "none"}}>
-                    {(name.isDirty && name.minLengthError && !name.isEmpty) &&
+                    {(name.isDirty && name.minLengthError) &&
                     <p style={{color: "red"}}>Name should be as min 3 letters</p>}
                     <div className="editItems">
                         <input type="name" id="inputName" value={name.value} onChange={e => name.onChange(e)}
-                               onBlur={e => name.onBlur(e)} placeholder={"Name:" + user.name}/>
+                               onBlur={e => name.onBlur(e)} placeholder={"Name:" + "Sergey"}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
@@ -107,7 +107,7 @@ const Settings = () => {
                     <div className="editItems">
                         <input type="name" id="inputName" value={surname.value} onChange={e => surname.onChange(e)}
                                onBlur={e => surname.onBlur(e)}
-                               placeholder={user.surname ? "Surname:" + user.surname : "Surname"}/>
+                               placeholder={"Surname"}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
@@ -117,21 +117,22 @@ const Settings = () => {
                         <input type="country" id="inputCountry" value={country.value}
                                onChange={e => country.onChange(e)}
                                onBlur={e => country.onBlur(e)}
-                               placeholder={user.country ? "Country:" + user.country : "Country"}/>
+                               placeholder={"Country"}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {(phone.isDirty && phone.validPhoneError && phone.value) &&
-                    <p style={{color: "red"}}>Wrong phone type</p>}
+                    {/*{(phone.isDirty && phone.validPhoneError && phone.value) &&*/}
+                    {/*<p style={{color: "red"}}>Wrong phone type</p>}*/}
                     <div className="editItems">
                         <input type="phone" id="inputPhone" value={phone.value} onChange={e => phone.onChange(e)}
                                onBlur={e => phone.onBlur(e)}
                                placeholder={user.phone ? "Phone:" + user.phone : "Phone"}/>
                     </div>
                 </li>
+
                 <li style={{listStyleType: "none"}}>
-                    {(email.isDirty && email.emailError && !email.isEmpty) &&
-                    <p style={{color: "red"}}>Wrong type of email</p>}
+                    {/*{(email.isDirty && email.emailError && !email.isEmpty) &&*/}
+                    {/*<p style={{color: "red"}}>Wrong type of email</p>}*/}
                     <div className="editItems">
                         <input type="email" id="inputEmail" value={email.value} onChange={e => email.onChange(e)}
                                onBlur={e => email.onBlur(e)} placeholder={"Email:" + user.email}/>
@@ -146,23 +147,23 @@ const Settings = () => {
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {(password.isDirty && password.validPasswordError && !password.isEmpty) &&
-                    <p style={{color: "red"}}>Password should be between 8 and 15 characters which contain at least one
-                        lowercase letter, one uppercase letter, one numeric digit, and one special character</p>}
-                    <div className="editItems">
-                        <input type="password" id="inputPassword" value={password.value}
-                               onChange={e => password.onChange(e)}
-                               onBlur={e => password.onBlur(e)} placeholder="Password"/>
-                    </div>
+                    {/*{(password.isDirty && password.validPasswordError && !password.isEmpty) &&*/}
+                    {/*<p style={{color: "red"}}>Password should be between 8 and 15 characters which contain at least one*/}
+                    {/*    lowercase letter, one uppercase letter, one numeric digit, and one special character</p>}*/}
+                    {/*<div className="editItems">*/}
+                    {/*    <input type="password" id="inputPassword" value={password.value}*/}
+                    {/*           onChange={e => password.onChange(e)}*/}
+                    {/*           onBlur={e => password.onBlur(e)} placeholder="Password"/>*/}
+                    {/*</div>*/}
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {(password.isDirty && repeatedPassword.value !== password.value) &&
-                    <p style={{color: "red"}}>Password mismatch</p>}
-                    <div className="editItems">
-                        <input type="password" id="inputPassword" value={repeatedPassword.value}
-                               onChange={e => repeatedPassword.onChange(e)}
-                               onBlur={e => repeatedPassword.onBlur(e)} placeholder="Repeat password"/>
-                    </div>
+                    {/*{(password.isDirty && repeatedPassword.value !== password.value) &&*/}
+                    {/*<p style={{color: "red"}}>Password mismatch</p>}*/}
+                    {/*<div className="editItems">*/}
+                    {/*    <input type="password" id="inputPassword" value={repeatedPassword.value}*/}
+                    {/*           onChange={e => repeatedPassword.onChange(e)}*/}
+                    {/*           onBlur={e => repeatedPassword.onBlur(e)} placeholder="Repeat password"/>*/}
+                    {/*</div>*/}
                     <div className="editItems" id="nav">
                         <NavLink to='/themes' className="changeThemes">Change ThemeList</NavLink>
                     </div>

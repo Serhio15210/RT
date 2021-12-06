@@ -20,7 +20,7 @@ const Theme = ({themeArray}) => {
     })
 
     const setMark=(theme,bool)=>{
-        bool?themeArray.push(theme):themeArray.pop(theme)
+        bool===true?themeArray.push(theme):themeArray.pop(theme)
         setThemeMark({...themeMark,[theme]:bool})
 
     }

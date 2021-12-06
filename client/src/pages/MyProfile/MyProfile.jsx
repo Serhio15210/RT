@@ -1,15 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
-import Home from "../home/Home";
+
 import './MyProfile.css'
-import {NavLink} from "react-bootstrap";
-import { FaBeer } from 'react-icons/fa';
+
 import {Link, useParams} from "react-router-dom";
-import Footer from "../Footer/Footer";
+
 import {AuthContext} from "../../context";
 import icon from "./profile-picture-circle-hd-removebg-preview.png"
 import {$authHost, $host} from "../../http";
-import jwtDecode from "jwt-decode";
-import data from "bootstrap/js/src/dom/data";
+
 const MyProfile =  () => {
 
 

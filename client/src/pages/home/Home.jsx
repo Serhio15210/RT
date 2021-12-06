@@ -82,7 +82,7 @@ const Home = () => {
                     {isPostsLoading &&
                     <div style={{display: 'flex', justifyContent: 'center', marginTop: 50}}><Loader/></div>
                     }
-                    {filteredPosts?
+                    {filteredPosts.length!==0?
                     <PostList posts={filteredPosts}/>
                     :
                     <h1 style={{textAlign:"center"}}>Posts not found</h1>}

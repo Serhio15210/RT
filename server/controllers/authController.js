@@ -17,6 +17,7 @@ class authController{
     async registration(req, res){
         try {
             const {name, surname, country, phone, email, nickname, password,themes} = req.body
+            console.log(req.body)
             const data = {name, email,nickname,password,themes}
             const candidate = await User.findOne({email})
             if (candidate) {
@@ -77,8 +78,8 @@ class authController{
     async update(req, res){
         try {
             const user = req.user
-            const {name, surname, country, phone, nickname} = req.body
-            const data = {name, surname, country, phone, nickname}
+            const {name, surname, country, phone, nickname,themes} = req.body
+            const data = {name, surname, country, phone, nickname,themes}
             const updatedUser = await User.findByIdAndUpdate(user.id, data, {new:true})
             return res.json(updatedUser)
         } catch (e) {

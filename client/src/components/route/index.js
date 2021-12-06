@@ -30,6 +30,7 @@ export const privateRoutes=[
     {path:'/editPhoto',component:EditPhoto,exact:true},
 
 
+
 ]
 export const publicRoutes=[
     {path:'/enter',component:Enter,exact:true},
