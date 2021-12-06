@@ -1,0 +1,22 @@
+.myBtn{
+    padding: 5px 15px;
+
+
+    font-size: 14px;
+    background-color: deepskyblue;
+    border: 1px solid rebeccapurple;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.myBtn:hover{
+    top:2px;
+    box-shadow: 0 3px 0px #3c354a;
+    background: linear-gradient(purple, white);
+    transition-duration: 1s;
+}
+.currButton{
+    border: 2px solid purple;
+
+    font-weight: bold;
+}

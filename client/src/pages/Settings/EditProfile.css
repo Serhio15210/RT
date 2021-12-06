@@ -1,0 +1,155 @@
+
+.editContainer {
+    position: absolute;
+    width: 100%;
+    height: 1000px;
+    display: flex;
+    align-items: center;
+
+}
+
+.editContent {
+
+    position: absolute;
+    top: 150px;
+    left: 40%;
+    width: 600px;
+    height: 600px;
+
+
+}
+
+.editItems {
+    color: white;
+
+}
+
+.editContent li {
+
+    margin-bottom: 30px;
+}
+
+.editItems input {
+    color: white;
+    width: 600px;
+    border: none;
+    background: none;
+    border-bottom: 2px solid white;
+
+}
+
+.editItems input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid white;
+}
+
+.editItems#nav {
+    margin: 20px -10px;
+}
+
+.editHead {
+    position: absolute;
+    width: 400px;
+    height: 50px;
+    left: 100px;
+    top: 100px;
+
+}
+
+.editHead p {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 80px;
+}
+
+.editButtons {
+    position: relative;
+    top: 30px;
+    width: 100px;
+    height: 80px;
+    left: 400px;
+    box-sizing: border-box;
+}
+
+.linkCancel {
+    font-size: 25px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+
+.linkSave {
+    font-size: 25px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+
+.linkCancel:hover {
+    color: red;
+}
+
+.linkSave:hover {
+    color: lawngreen;
+}
+.changeThemes{
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+}
+
+.iconChecked{
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 230px;
+    height: 230px;
+    top: 50px;
+    left: 100px;
+    background: white;
+    border-radius: 50px;
+
+    border: 3px solid white; /* Белая рамка */
+}
+
+.iconChecked span {
+
+    display: none;
+    transition: all .25s;
+    -webkit-transition: all .25s;
+    -o-transition: all .25s;
+    position: absolute;
+
+    height: 100px;
+    background: black;
+    width: 100%;
+    border-radius: 100px;
+    bottom: 0;
+    color: white;
+    text-align: -webkit-center;
+    opacity: 0.5;
+}
+
+.iconChecked:hover span {
+    display: block;
+
+}
+.iconChecked:active{
+    border:3px solid black ;
+
+}
+.modalEdit {
+    position: relative;
+    display: flex;
+    width: 1000px;
+    height: 1000px;
+    margin: auto;
+}
+.toDrag{
+    height: 200px;
+}
+
+
+

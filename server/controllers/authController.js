@@ -24,7 +24,7 @@ class authController{
             }
             const hashPassword = bcrypt.hashSync(password,7)
             const userRole = await Role.findOne({value: "USER"})
-            const user = await User.create({...data,password: hashPassword, roles: [userRole._doc.value]})
+            const user = await User.create({...data,password: hashPassword, roles: [userRole.value]})
             return res.json({message: "Пользователь был успешно зарегестрирован"})
         } catch (e) {
             console.log(e)
@@ -65,8 +65,9 @@ class authController{
     
         async getUserOne(req, res) {
         try {
-            const {id} = req.params
+            const {id} = req.user
             const post = await User.findById(id)
+            console.log(post)
             return res.json(post)
         } catch (e) {
             res.status(500).json(e)
@@ -87,13 +88,15 @@ class authController{
 
     async delete(req, res){
         try {
-            const {id} = req.params
+            const {id} = req.user
             const user = await User.findByIdAndDelete(id)
             return res.json(user)
         } catch (e) {
             res.status(500).json(e)
         }
     }
+
+
 }
 
 module.exports = new authController()

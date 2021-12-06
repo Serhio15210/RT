@@ -1,24 +1,33 @@
 import axios from "axios";
+import {$host} from "../http";
+import {useContext} from "react";
+import {AuthContext} from "../context";
 
 export default class PostService {
-    static async getAll(limitPage=10,page=1) {
+
+    static async getAll(tag:'спорт&музыка&искусство&кино&медицина&it&игры&мода&бизнесс') {
         // 'http://192.168.1.163:8000/tweeter_api'
-        const response=await axios.get('https://api.twitter.com/2/tweets/search/recent?query=music',{
-            headers:
-                {
-                    "Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAHHnVgEAAAAA0Xv8oqEMfvyXhRsRp5OvEe%2BY2PI%3DUidYw4k43wXd2D4N9KYTo4RgHxrBNKf70eSqbfyNa8dUoq6QYe",
-                    // "Access-Control-Allow-Origin": "*" ,
-                    // 'Access-Control-Allow-Methods': 'GET',
-                    // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
-                },
-        });
-    }
+            const response=await $host.get(`auth/twitter_api?tag=` + tag)
+        console.log(response.data)
+        return response.data
 
 
-    static async getById(id){
-        return await axios.get('https://jsonplaceholder.typicode.com/posts/' + id)
     }
-    static async getCommentsByPostId(id) {
-        return await axios.get(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
-    }
+    // static async getAll(limit = 10, page = 1) {
+    //     const response = await axios.get('https://jsonplaceholder.typicode.com/posts', {
+    //         params: {
+    //             _limit: limit,
+    //             _page: page
+    //         }
+    //     })
+    //     console.log(response)
+    //     return response;
+    // }
+    // static async getAll() {
+    //     // 'http://192.168.1.163:8000/tweeter_api'
+    //
+    //     return await $host.get('auth/getHotNews')
+    // }
+
+
 }
