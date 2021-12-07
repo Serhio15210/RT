@@ -26,7 +26,7 @@ export const useValidation = (value, validations) => {
                     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(String(value))?setValidPasswordError(false):setValidPasswordError(true)
                     break
                 case "isPhoneValid":
-                    /^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/.test(String(value))?setValidPhoneError(false):setValidPhoneError(true)
+                    /^\+380\d{3}\d{2}\d{2}\d{2}$/.test(String(value))?setValidPhoneError(false):setValidPhoneError(true)
             }
         }
     }, [value])

@@ -71,8 +71,8 @@ const Registration = () => {
                                                        onBlur={e => country.onBlur(e)}
                                                        placeholder="Country"/>
                         <i className="fas fa-globe"/></div>
-                    {/*{(phone.isDirty && phone.validPhoneError && phone.value) &&*/}
-                    {/*<p style={{color: "red"}}>Wrong phone type</p>}*/}
+                    {(phone.isDirty && phone.validPhoneError && phone.value) &&
+                    <p style={{color: "red"}}>Wrong phone type</p>}
                     <div className="form-group"><input type="phone" className="form-control" id="inputPhone"
                                                        value={phone.value} onChange={e => phone.onChange(e)}
                                                        onBlur={e => phone.onBlur(e)} placeholder="Phone"/>
