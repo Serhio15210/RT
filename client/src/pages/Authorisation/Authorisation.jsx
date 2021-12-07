@@ -29,6 +29,7 @@ const Authorisation = () => {
             let data;
 
             data = await loginAccount(email.value, password.value);
+            console.log(data)
             setIsAuth(true)
             localStorage.setItem('auth','true')
             history.push('/home')

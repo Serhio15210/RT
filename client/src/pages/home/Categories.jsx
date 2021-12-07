@@ -21,7 +21,7 @@ const Categories = ({posts, setPosts}) => {
     const history = useHistory()
     const oldPosts=posts
     let newArray = Array.from(themeArray);
-    const [user, setUser] = useState('[]')
+    const [user, setUser] = useState([])
     const [themeMark, setThemeMark] = useState({
         'Sport': false,
         "Business": false,
