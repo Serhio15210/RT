@@ -28,10 +28,10 @@ const Authorisation = () => {
         try {
             let data;
 
-            data = await loginAccount(email.value, password.value);
+            data = await loginAccount(email.value, password.value).then(()=>localStorage.setItem('auth','true')).then(()=>setIsAuth(true));
             console.log(data)
-            setIsAuth(true)
-            localStorage.setItem('auth','true')
+
+
             history.push('/home')
         } catch (e) {
             alert(e.response.data.message)

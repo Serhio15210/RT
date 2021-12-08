@@ -30,12 +30,22 @@ const Registration = () => {
     const click =  () => {
 
             let data;
-            data =  registration(name.value, email.value, nickname.value, password.value, surname.value, phone.value, country.value,themes);
+            data =  registration(
+                name.value,
+                email.value,
+                nickname.value,
+                password.value,
+                surname.value,
+                phone.value,
+                country.value,
+                themes
+            );
             console.log(data)
-            setIsAuth(true)
-            localStorage.setItem('auth', 'true')
+        history.push('/login')
+
+
     }
-    const {isSignUp, setIsAuth,setSignUp} = useContext(AuthContext)
+
 
 
     return (

@@ -7,7 +7,7 @@ export const registration = async (name, email, nickname, password,surname,phone
 
     const {data} = await $host.post('auth/registration', payload)
 
-    return jwtDecode(data.value)
+
 }
 
 export const loginAccount = async (email, password) => {

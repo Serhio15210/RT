@@ -6,6 +6,7 @@ import './Home.css'
 import {AuthContext} from "../../context";
 import {$authHost, $host} from "../../http";
 import {useHistory} from "react-router-dom";
+import Loader from "../../UI/Loader/Loader";
 
 const Categories = ({posts, setPosts}) => {
     // const [sportMark, setSportMark] = useState(false)
@@ -17,11 +18,11 @@ const Categories = ({posts, setPosts}) => {
     // const [itMark, setITMark] = useState(false)
     // const [medicineMark, setMedicineMark] = useState(false)
     // const [gamesMark, setGamesMark] = useState(false)
-    const {themeArray} = useContext(AuthContext)
+    const {themeArray,user,isPostsLoading} = useContext(AuthContext)
     const history = useHistory()
-    const oldPosts=posts
-    let newArray = Array.from(themeArray);
-    const [user, setUser] = useState([])
+    const oldPosts = posts
+    let newArray = themeArray;
+
     const [themeMark, setThemeMark] = useState({
         'Sport': false,
         "Business": false,
@@ -33,17 +34,21 @@ const Categories = ({posts, setPosts}) => {
         "IT": false,
         "Games": false,
     })
-    const getThemes = async () => {
-        const {data} = await $authHost.get(`auth/user_one`, {themes: themeArray})
-
-        return data
-    }
-    useEffect(() => {
-       getThemes().then(data=>console.log(data))
-
-
-
-    }, [])
+    // const getThemes = async () => {
+    //     const {data} = await $authHost.get(`auth/user_one`, {themes: themeArray})
+    //
+    //     return data
+    // }
+    // useEffect(() => {
+    //     getThemes().then(data => {
+    //         newArray=data.themes
+    //         console.log(data.themes)
+    //
+    //     })
+    //     console.log(newArray)
+    //
+    //
+    // }, [])
 
 
     // if (bool){
@@ -53,11 +58,11 @@ const Categories = ({posts, setPosts}) => {
     // }
     const sortedPosts = async (theme, bool) => {
         setThemeMark({...themeMark, [theme]: bool})
-        if (bool===true){
-            const response=await $host.get(`auth/twitter_api?tag=` + theme)
+        if (bool === true) {
+            const response = await $host.get(`auth/twitter_api?tag=` + theme)
 
             setPosts(response.data.data)
-        }else {
+        } else {
             setPosts(oldPosts)
         }
     }
@@ -75,21 +80,31 @@ const Categories = ({posts, setPosts}) => {
 
 
                     {/*{ JSON.parse(user.themes)!== 0 ?  JSON.parse(user.themes).map((theme, index) =>*/}
-                    {newArray.map((theme, index) =>
+
+
+
+                    {themeArray?themeArray.map((theme, index) =>
                         <ListGroup className="mt-3 listCategory"> <ListGroup.Item className={themeMark[theme] ?
                             "chooseChek fas fa-check " : "choose "} style={
-                            {boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',textAlign:"center"}}
+                            {boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', textAlign: "center"}}
                                                                                   onClick={() => sortedPosts(theme, !themeMark[theme])}><i
                             className="fas fa-hashtag"/> {theme}</ListGroup.Item>
                         </ListGroup>)
-                    //     : <NavLink style={{
-                    //     textDecoration: "none",
-                    //     border: "3px solid white",
-                    //     borderRadius: 30,
-                    //     position: "relative",
-                    //     top: 50
-                    // }} className="addThemes" to="/themes">Add Tags</NavLink>
+                            : <NavLink style={{
+                            textDecoration: "none",
+                            border: "3px solid white",
+                            borderRadius: 30,
+                            position: "relative",
+                            top: 50
+                        }} className="addThemes " to="/themes">Add Tags</NavLink>
                     }
+                    <NavLink style={{
+                        textDecoration: "none",
+                        border: "3px solid white",
+                        borderRadius: 30,
+                        position: "relative",
+                        top: 50
+                    }} className="addThemes" to="/themes">Add Tags</NavLink>
 
 
                 </Col>

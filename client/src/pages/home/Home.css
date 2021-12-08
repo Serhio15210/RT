@@ -384,6 +384,7 @@
     height: 100px;
     padding: 35px;
     color: white;
+    right: 20px;
 }
 .addThemes:hover{
     background: white;

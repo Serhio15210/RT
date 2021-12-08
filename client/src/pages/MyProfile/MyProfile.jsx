@@ -12,17 +12,17 @@ const MyProfile =  () => {
 
 
     const [isSettingsPushed, setSettingsPushed] = useState(false)
-    const {themeArray, avatar, setAvatar} = useContext(AuthContext)
-    const[user,setUser]=useState([])
+    const {themeArray, avatar, setAvatar,user} = useContext(AuthContext)
+    // const[user,setUser]=useState([])
 
-    const userOne = async () => {
-        const {data} = await $authHost.get(`auth/user_one`)
-        return data
-    }
-    useEffect(()=>{
-        userOne().then(data=>setUser(data)
-         )
-    },[])
+    // const userOne = async () => {
+    //     const {data} = await $authHost.get(`auth/user_one`)
+    //     return data
+    // }
+    // useEffect(()=>{
+    //     userOne().then(data=>setUser(data)
+    //      )
+    // },[])
     return (
         <div>
             <div className="header">

@@ -5,13 +5,14 @@ const Twitter = require('twitter')
 class Api_controller {
     async twitter_api(req, res) {
         const {tag} = req.query
+        console.log(tag)
         const response = await axios.get('https://api.twitter.com/2/tweets/search/recent?media.fields=&user.fields=profile_image_url,name&max_results=100&query=' + tag,
             {
                 headers: {
-                    "Authorization": "Bearer AAAAAAAAAAAAAAAAAAAAAHHnVgEAAAAALpaUElWFhCgLmObkYTE2%2Bubovv4%3DElqZqTBmccsR4MI9BKDp7ePhevUNwIquBdkeeyfprWDIkn8EZk"
+                    "Authorization": `Bearer ${process.env.bearer}`
                 }
             })
-
+        console.log(response.data)
         return res.json(response.data)
     }
 

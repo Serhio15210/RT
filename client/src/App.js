@@ -9,6 +9,7 @@ import AppRouter from "./components/route/AppRouter";
 import {observer} from "mobx-react-lite";
 import {BeatLoader} from "react-spinners";
 import Authorisation from "./pages/Authorisation/Authorisation";
+import {$authHost} from "./http";
 
 
 const App = observer(() => {
@@ -17,8 +18,19 @@ const App = observer(() => {
     const[isAuth,setIsAuth]=useState(false)
     const[isSignUp,setSignUp]=useState(false)
     const [avatar,setAvatar]=useState(null)
-    const themeArray=[]
+    const[user,setUser]=useState([])
+    const[themeArray,setThemeArray]=useState([])
+    const userOne = async () => {
+        const {data} = await $authHost.get(`auth/user_one`)
+        return data
+    }
+
         useEffect(()=>{
+            userOne().then(data=>{
+                setUser(data)
+                setThemeArray(data.themes)
+                }
+            )
             setSignUp(false)
             if (localStorage.getItem('auth')&&localStorage.getItem('token')){
                 setIsAuth(true)
@@ -43,7 +55,7 @@ const App = observer(() => {
     return (
 
         <AuthContext.Provider value={{
-            isAuth,setIsAuth,isLoading,isSignUp,setSignUp,themeArray,avatar,setAvatar
+            isAuth,setIsAuth,isLoading,isSignUp,setSignUp,themeArray,setThemeArray,avatar,setAvatar,user,setUser
         }}>
         <BrowserRouter >
 

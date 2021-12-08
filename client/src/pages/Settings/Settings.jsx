@@ -12,7 +12,7 @@ import EditModal from "./EditModal";
 
 const Settings = () => {
 
-    const {avatar, setAvatar, isAuth, setIsAuth} = useContext(AuthContext)
+    const {avatar, setAvatar, isAuth, setIsAuth,user,themeArray,setThemeArray} = useContext(AuthContext)
     const [modal, setModal] = useState(false)
     const name = useInput('', {minLength: 3})
     const surname = useInput('', {minLength: 3})
@@ -22,18 +22,9 @@ const Settings = () => {
     const nickname = useInput('', {isEmpty: true, minLength: 3})
     const password = useInput('', {isEmpty: true, isValidPassword: true})
     const repeatedPassword = useInput('', {isEmpty: true, isValidPassword: true})
-    const [user, setUser] = useState([])
     const [isEditModal, setEditModal] = useState(false)
     const history = useHistory()
     let updateArray=[]
-    const userOne = async () => {
-        const {data} = await $authHost.get(`auth/user_one`)
-        return data
-    }
-    useEffect(() => {
-        userOne().then(data => setUser(data)
-        )
-    }, [])
 
     const edit = async () => {
         try {
@@ -166,6 +157,7 @@ const Settings = () => {
                     {/*</div>*/}
                     <div className="editItems" id="nav">
                         <NavLink to='/themes' className="changeThemes">Change ThemeList</NavLink>
+                        <NavLink to='/themes' className="changeThemes">Reset ThemeList</NavLink>
                     </div>
                 </li>
                 <div className="editButtons">

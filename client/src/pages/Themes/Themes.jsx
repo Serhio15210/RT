@@ -8,16 +8,17 @@ import {$authHost} from "../../http";
 
 const Themes = ( ) => {
     const [skip, setSkip] = useState(false)
-    const {themeArray} = useContext(AuthContext)
+    let {themeArray,user} = useContext(AuthContext)
     const setSkipButton=()=>{
         setSkip(true)
-        themeArray.length=0
+        themeArray=user.themes
 
     }
     const updateThemes=async () => {
         console.log(themeArray)
-        const response = await $authHost.put('/auth/update',{themes: themeArray})
+        const response = await $authHost.put('/auth/update',{themes: Array.from(new Set(themeArray))})
         console.log(response.data)
+        window.location.reload()
     }
 
     return (

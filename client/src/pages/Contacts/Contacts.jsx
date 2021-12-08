@@ -14,7 +14,7 @@ const Contacts = () => {
                     <h2 style={{color: "white"}}>Маливанчук Сергей</h2>
                     <p style={{color: "white"}}>LAI-195</p>
                 </div>
-                <img src={razrab}/>
+                <img src=""/>
             </div>
             <div className="contactCard" id="contact2">
                 <div className="contactContent  "  >

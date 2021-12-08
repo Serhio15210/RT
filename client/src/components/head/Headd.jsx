@@ -18,6 +18,7 @@ const Headd = () => {
         setIsAuth(false);
         localStorage.removeItem('auth')
         localStorage.removeItem('themeArray')
+        localStorage.removeItem('token')
         // user.setIsAuth(false)
     }
     return (
