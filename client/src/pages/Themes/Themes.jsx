@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import "./Themes.css"
-import {Transition} from 'react-transition-group';
+
 import {NavLink} from "react-router-dom";
 import Theme from "./Theme";
 import {AuthContext} from "../../context";
@@ -8,7 +8,7 @@ import {$authHost} from "../../http";
 
 const Themes = ( ) => {
     const [skip, setSkip] = useState(false)
-    let {themeArray,user} = useContext(AuthContext)
+    let {themeArray,user,setThemeArray} = useContext(AuthContext)
     const setSkipButton=()=>{
         setSkip(true)
         themeArray=user.themes
@@ -16,9 +16,10 @@ const Themes = ( ) => {
     }
     const updateThemes=async () => {
         console.log(themeArray)
-        const response = await $authHost.put('/auth/update',{themes: Array.from(new Set(themeArray))})
+        setThemeArray(Array.from(new Set(themeArray)))
+        const response = await $authHost.put('/auth/update',{themes: themeArray})
         console.log(response.data)
-        window.location.reload()
+
     }
 
     return (

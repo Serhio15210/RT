@@ -3,12 +3,12 @@ import './EditProfile.css'
 import {Link, NavLink, useHistory} from "react-router-dom";
 import {AuthContext} from "../../context";
 import icon from "../MyProfile/profile-picture-circle-hd-removebg-preview.png";
-import EditPhoto from "./EditPhoto";
+
 import {$authHost, $host} from "../../http";
 import {useInput} from "../../hooks/useInput";
-import {registration} from "../../http/UserAPI";
+
 import {Button} from "react-bootstrap";
-import EditModal from "./EditModal";
+
 
 const Settings = () => {
 
@@ -29,7 +29,7 @@ const Settings = () => {
     const edit = async () => {
         try {
             let data;
-            data = await $authHost.put('auth/update',{name:name.value,surname:surname.value,email:email.value,phone:phone.value,country:country.value,nickname:nickname.value,password:password.value});
+            data = await $authHost.put('auth/update',{name:name.value,surname:surname.value,email:email.value,phone:phone.value,country:country.value,nickname:nickname.value,password:password.value,themes:themeArray});
             console.log(data)
             alert(data ? 'Edit success' : 'Edit canceled')
 
@@ -89,7 +89,7 @@ const Settings = () => {
                     <p style={{color: "red"}}>Name should be as min 3 letters</p>}
                     <div className="editItems">
                         <input type="name" id="inputName" value={name.value} onChange={e => name.onChange(e)}
-                               onBlur={e => name.onBlur(e)} placeholder={"Name:" + "Sergey"}/>
+                               onBlur={e => name.onBlur(e)} placeholder={"Name:" + user.name}/>
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
@@ -112,8 +112,8 @@ const Settings = () => {
                     </div>
                 </li>
                 <li style={{listStyleType: "none"}}>
-                    {/*{(phone.isDirty && phone.validPhoneError && phone.value) &&*/}
-                    {/*<p style={{color: "red"}}>Wrong phone type</p>}*/}
+                    {(phone.isDirty && phone.validPhoneError && phone.value) &&
+                    <p style={{color: "red"}}>Wrong phone type</p>}
                     <div className="editItems">
                         <input type="phone" id="inputPhone" value={phone.value} onChange={e => phone.onChange(e)}
                                onBlur={e => phone.onBlur(e)}
@@ -157,7 +157,12 @@ const Settings = () => {
                     {/*</div>*/}
                     <div className="editItems" id="nav">
                         <NavLink to='/themes' className="changeThemes">Change ThemeList</NavLink>
-                        <NavLink to='/themes' className="changeThemes">Reset ThemeList</NavLink>
+                        <Button  className="changeThemes" onClick={()=>{
+                            setThemeArray([])
+                            alert("Themes was cleared.Press `Save` ")
+                        }
+
+                        }>Reset ThemeList</Button>
                     </div>
                 </li>
                 <div className="editButtons">

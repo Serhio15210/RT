@@ -2,8 +2,8 @@ import {$authHost, $host} from "./index";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 
-export const registration = async (name, email, nickname, password,surname,phone,country,themes) => {
-    const payload = {name, email, nickname, password,themes}
+export const registration = async (name, email, nickname, password, surname, phone, country, themes) => {
+    const payload = {name, email, nickname, password, themes}
 
     const {data} = await $host.post('auth/registration', payload)
 
@@ -11,7 +11,6 @@ export const registration = async (name, email, nickname, password,surname,phone
 }
 
 export const loginAccount = async (email, password) => {
-    console.log("login")
     const response = await $host.post('auth/login', {email, password})
     console.log(response.data)
     localStorage.setItem("token", response.data.token)

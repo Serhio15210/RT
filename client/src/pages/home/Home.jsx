@@ -27,6 +27,7 @@ const Home = () => {
     const {themeArray} = useContext(AuthContext)
     const [query, setQuery] = useState('')
     const history=useHistory()
+    const {defaultArray,setDefaultArray}=useContext(AuthContext)
 
     const changePage = (page) => {
         setPage(page)
@@ -44,8 +45,14 @@ const Home = () => {
         // console.log(response)
         //
         // }
-        const response = await PostService.getAll();
-        setPosts(response.data)
+        const response = await PostService.getAll().then((response)=> {
+            setPosts(response.data)
+
+        });
+
+
+        console.log(posts)
+
         const totalCount = posts.length
         setTotalPage(getPageCount(totalCount, limitPage))
     })
@@ -53,11 +60,13 @@ const Home = () => {
     const filteredPosts =posts.filter(post => {return post.text.toLowerCase().includes(query.toLowerCase())}
 
 )
+    console.log(filteredPosts.length)
 
 
 
     useEffect(() => {
         fetchPosts(limitPage, page)
+
 
     }, [limitPage, page])
 

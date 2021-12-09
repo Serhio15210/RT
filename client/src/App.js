@@ -20,26 +20,27 @@ const App = observer(() => {
     const [avatar,setAvatar]=useState(null)
     const[user,setUser]=useState([])
     const[themeArray,setThemeArray]=useState([])
+    const[defaultArray,setDefaultArray]=useState([])
     const userOne = async () => {
         const {data} = await $authHost.get(`auth/user_one`)
         return data
     }
 
-        useEffect(()=>{
-            userOne().then(data=>{
+    useEffect(()=>{
+        userOne().then(data=>{
                 setUser(data)
-                setThemeArray(data.themes)
-                }
-            )
-            setSignUp(false)
-            if (localStorage.getItem('auth')&&localStorage.getItem('token')){
-                setIsAuth(true)
-                localStorage.getItem('themeArray')&&themeArray.push(localStorage.getItem('themeArray'))
-
-                console.log(themeArray)
+                setThemeArray(Array.from(new Set(data.themes)))
             }
-            setLoading(false)
-        },[])
+        )
+        setSignUp(false)
+        if (localStorage.getItem('auth')&&localStorage.getItem('token')){
+            setIsAuth(true)
+            localStorage.getItem('themeArray')&&themeArray.push(localStorage.getItem('themeArray'))
+
+            console.log(themeArray)
+        }
+        setLoading(false)
+    },[])
     // useEffect(() => {
     //     check().then(data => {
     //         console.log(data)
@@ -50,18 +51,18 @@ const App = observer(() => {
     //
     // }, [])
     if (isLoading) {
-       return <BeatLoader loading color='black' size={25} />
+        return <BeatLoader loading color='black' size={25} />
     }
     return (
 
         <AuthContext.Provider value={{
-            isAuth,setIsAuth,isLoading,isSignUp,setSignUp,themeArray,setThemeArray,avatar,setAvatar,user,setUser
+            isAuth,setIsAuth,isLoading,isSignUp,setSignUp,themeArray,setThemeArray,avatar,setAvatar,user,setUser,defaultArray,setDefaultArray
         }}>
-        <BrowserRouter >
+            <BrowserRouter >
 
-            <AppRouter/>
-            <Header/>
-        </BrowserRouter>
+                <AppRouter/>
+                <Header/>
+            </BrowserRouter>
         </AuthContext.Provider>
 
 

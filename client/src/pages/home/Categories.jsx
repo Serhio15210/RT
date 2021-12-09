@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import {Card, Col, Container, ListGroup, Row} from "react-bootstrap";
 import {NavLink} from "react-router-dom"
-import {Button} from "bootstrap";
+
 import './Home.css'
 import {AuthContext} from "../../context";
 import {$authHost, $host} from "../../http";
 import {useHistory} from "react-router-dom";
-import Loader from "../../UI/Loader/Loader";
+
 
 const Categories = ({posts, setPosts}) => {
     // const [sportMark, setSportMark] = useState(false)
@@ -83,7 +83,7 @@ const Categories = ({posts, setPosts}) => {
 
 
 
-                    {themeArray?themeArray.map((theme, index) =>
+                    {themeArray.length!==0?themeArray.map((theme, index) =>
                         <ListGroup className="mt-3 listCategory"> <ListGroup.Item className={themeMark[theme] ?
                             "chooseChek fas fa-check " : "choose "} style={
                             {boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', textAlign: "center"}}
@@ -98,13 +98,7 @@ const Categories = ({posts, setPosts}) => {
                             top: 50
                         }} className="addThemes " to="/themes">Add Tags</NavLink>
                     }
-                    <NavLink style={{
-                        textDecoration: "none",
-                        border: "3px solid white",
-                        borderRadius: 30,
-                        position: "relative",
-                        top: 50
-                    }} className="addThemes" to="/themes">Add Tags</NavLink>
+
 
 
                 </Col>

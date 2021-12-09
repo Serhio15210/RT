@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
-import MyButtons from "../../UI/buttons/MyButtons";
+
 import {AuthContext} from "../../context";
 import './Authorisation.css'
-import Footer from "../Footer/Footer";
+
 import {NavLink, useHistory, useLocation} from "react-router-dom";
 import ModalHelp from "./ModalHelp";
 import {Button, Form, Row} from "react-bootstrap";
@@ -11,7 +11,7 @@ import {login, loginAccount} from "../../http/UserAPI";
 
 import {observer} from "mobx-react-lite";
 
-const Authorisation = () => {
+const Authorisation = observer(() => {
     const {isAuth,setIsAuth}=useContext(AuthContext)
     const location=useLocation()
     const history=useHistory()
@@ -78,6 +78,6 @@ const Authorisation = () => {
     </div>
 
     );
-};
+});
 
 export default Authorisation;

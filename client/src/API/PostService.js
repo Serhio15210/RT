@@ -5,9 +5,17 @@ import {AuthContext} from "../context";
 
 export default class PostService {
 
-    static async getAll(tag:'спорт&музыка&искусство&кино&медицина&it&игры&мода&бизнесс') {
+    static async getAll(tag='sport&music&arts&cinema&medicine&it&games&fashion&business') {
         // 'http://192.168.1.163:8000/tweeter_api'
             const response=await $host.get(`auth/twitter_api?tag=` + tag)
+        console.log(response.data)
+        return response.data
+
+
+    }
+    static async getDef(tag='sport&music&arts&cinema&medicine&it&games&fashion&business') {
+        // 'http://192.168.1.163:8000/tweeter_api'
+        const response=await $host.get(`auth/twitter_api?tag=` + tag)
         console.log(response.data)
         return response.data
 
